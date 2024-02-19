@@ -1,8 +1,27 @@
+[workspace]
+members = [
+    "goon_proc_macros",
+]
+exclude = [
+    "example"
+]
 [package]
-name = "GOON"
+name = "goon_rs"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+lazy_static = "1.4.0"
+goon_proc_macros = { path = "./goon_proc_macros" }
+serde = { version = "1.0", features = ["derive"] }
+syn = { version="1.0", features = ["full"]}
+
+# serde_json is just for the example, not required in general
+serde_json = "1.0"
+
+
+[lib]
+name = "goon"
+path = "src/lib.rs"

@@ -3,6 +3,13 @@
 version = 3
 
 [[package]]
+name = "example"
+version = "0.1.0"
+dependencies = [
+ "goon_rs",
+]
+
+[[package]]
 name = "goon_proc_macros"
 version = "0.1.0"
 dependencies = [
