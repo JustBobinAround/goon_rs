@@ -1,3 +1,7 @@
 # GOON-RS
-### Globals On Our Network?!?!
+## GLOBALS ON OUR NETWORK?!?!
 That's right! Globals (ie static refs) to share program state on LANs.
+
+## Usage
+
+
