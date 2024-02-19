@@ -2,6 +2,10 @@
 name = "goon_proc_macros"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+repository = "https://github.com/JustBobinAround/goon-rs"
+authors=["Robert Junkins <roberthenryjunkins@gmail.com>"]
+description = "Proc macros for goon_rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

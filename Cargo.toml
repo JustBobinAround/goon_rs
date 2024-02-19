@@ -1,20 +1,17 @@
-[workspace]
-members = [
-    "goon_proc_macros",
-]
-exclude = [
-    "example"
-]
 [package]
 name = "goon_rs"
+license = "MIT"
 version = "0.1.0"
 edition = "2021"
+description = "Static Refs for Rust on the Network Level. "
+repository = "https://github.com/JustBobinAround/goon-rs"
+authors=["Robert Junkins <roberthenryjunkins@gmail.com>"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 lazy_static = "1.4.0"
-goon_proc_macros = { path = "./goon_proc_macros" }
+goon_proc_macros = "0.1.0"
 serde = { version = "1.0", features = ["derive"] }
 syn = { version="1.0", features = ["full"]}
 
