@@ -1,3 +1,4 @@
+extern crate goon_proc_macros;
 pub use lazy_static;
 use std::sync::{Arc, Mutex};
 pub use serde::{self,Deserialize, Serialize};

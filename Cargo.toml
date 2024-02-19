@@ -14,7 +14,7 @@ edition = "2021"
 
 [dependencies]
 lazy_static = "1.4.0"
-goon_proc_macros = { version="0.1.0", path = "./goon_proc_macros" }
+goon_proc_macros = { path = "./goon_proc_macros" }
 serde = { version = "1.0", features = ["derive"] }
 syn = { version="1.0", features = ["full"]}
 
