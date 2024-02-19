@@ -6,6 +6,7 @@ edition = "2021"
 description = "Static Refs for Rust on the Network Level. "
 repository = "https://github.com/JustBobinAround/goon-rs"
 authors=["Robert Junkins <roberthenryjunkins@gmail.com>"]
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
