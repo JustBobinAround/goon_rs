@@ -159,6 +159,7 @@ pub fn goon_init(args: TokenStream, input: TokenStream) -> TokenStream {
     let fn_name = &input.sig.ident;
     let fn_inputs = &input.sig.inputs;
     let fn_body = &input.block;
+
     let data_struct = quote! {
         struct Server {
             socket: Global<std::net::UdpSocket>,
@@ -225,15 +226,27 @@ pub fn goon_init(args: TokenStream, input: TokenStream) -> TokenStream {
         }
         struct Client {
             socket: Global<std::net::UdpSocket>,
-            peers: Global<std::collections::HashSet<u32>>
+            peers: Global<std::collections::HashSet<u32>>,
+            broadcast: String
         }
         impl Client {
             fn new(peers: Global<std::collections::HashSet<u32>>) -> Result<Client, std::io::Error> {
                 let socket = std::net::UdpSocket::bind("0.0.0.0:0")?;
                 socket.set_broadcast(true)?;
+                let ip = local_ip().unwrap();
+                let ip = ip.to_string();
+                let mut octets: Vec<&str> = ip.split('.').collect();
+
+                if let Some(last_octet) = octets.last_mut() {
+                    *last_octet = "255";
+                }
+
+                let ip = octets.join(".");
+                
                 Ok(Client{ 
                     socket: Global::new(socket),
-                    peers,
+                    peers: peers,
+                    broadcast: ip
                 })
             }
 
@@ -243,8 +256,12 @@ pub fn goon_init(args: TokenStream, input: TokenStream) -> TokenStream {
                     peers
                         .iter()
                         .for_each(|p| {
-                            let address = format!("0.0.0.0:{}", p);
+                            let address = format!("{}:{}", self.broadcast, p);
                             let socket = &self.socket;
+                            read_globals!(socket;{
+                                socket.send_to(buf, address);
+                            });
+                            let address = format!("127.255.255.255:{}", p);
                             read_globals!(socket;{
                                 socket.send_to(buf, address);
                             });

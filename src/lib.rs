@@ -2,6 +2,7 @@ pub use lazy_static;
 use std::sync::{Arc, Mutex};
 pub use serde::{self,Deserialize, Serialize};
 pub use serde_json;
+pub use local_ip_address::local_ip;
 pub use goon_proc_macros::{global, goon_init, declare_global, goon_update};
 pub struct Global<T> {
     inner: Arc<Mutex<T>>,
