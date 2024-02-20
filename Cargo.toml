@@ -18,7 +18,7 @@ syn = { version="1.0", features = ["full"]}
 
 # serde_json is just for the example, not required in general
 serde_json = "1.0"
-local-ip-address = "0.5.7"
+local-ip-address = { git = "https://github.com/JustBobinAround/local-ip-address.git" }
 
 
 [lib]

@@ -233,15 +233,8 @@ pub fn goon_init(args: TokenStream, input: TokenStream) -> TokenStream {
             fn new(peers: Global<std::collections::HashSet<u32>>) -> Result<Client, std::io::Error> {
                 let socket = std::net::UdpSocket::bind("0.0.0.0:0")?;
                 socket.set_broadcast(true)?;
-                let ip = local_ip().unwrap();
+                let ip = local_broadcast_ip().unwrap();
                 let ip = ip.to_string();
-                let mut octets: Vec<&str> = ip.split('.').collect();
-
-                if let Some(last_octet) = octets.last_mut() {
-                    *last_octet = "255";
-                }
-
-                let ip = octets.join(".");
                 
                 Ok(Client{ 
                     socket: Global::new(socket),

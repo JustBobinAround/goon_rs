@@ -18,7 +18,6 @@ checksum = "11157ac094ffbdde99aa67b23417ebdd801842852b500e395a45a9c0aac03e4a"
 name = "goon_proc_macros"
 version = "0.1.0"
 dependencies = [
- "local-ip-address",
  "proc-macro2",
  "quote",
  "syn 1.0.109",
@@ -57,8 +56,7 @@ checksum = "9c198f91728a82281a64e1f4f9eeb25d82cb32a5de251c6bd1b5154d63a8e7bd"
 [[package]]
 name = "local-ip-address"
 version = "0.5.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "612ed4ea9ce5acfb5d26339302528a5e1e59dfed95e9e11af3c083236ff1d15d"
+source = "git+https://github.com/JustBobinAround/local-ip-address.git#c3f144193b8a24c0d53dad39efed1d2ab9a7c341"
 dependencies = [
  "libc",
  "neli",
